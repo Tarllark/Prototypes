@@ -12,5 +12,6 @@ public class Reset : MonoBehaviour
     public void ResetCar()
     {
         car.transform.position = respawnPoint.transform.position;
+        car.transform.Rotate(new Vector3(0,0,0));
     }
 }

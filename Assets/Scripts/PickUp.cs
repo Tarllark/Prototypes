@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PickUp : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         coin = gameObject;
+        StartCoroutine("rotate");
     }
 
     // Update is called once per frame
@@ -27,8 +29,17 @@ public class PickUp : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        UI.transform.Find("counter").GetComponent<Text>().text = (int.Parse(UI.transform.Find("counter").GetComponent<Text>().text) + 1).ToString();
+        UI.transform.Find("counter").GetComponent<Text>().DOText((int.Parse(UI.transform.Find("counter").GetComponent<Text>().text) + 1).ToString(), 5);
         Destroy(coin);
+    }
+
+    IEnumerator rotate()
+    {
+        while(true)
+        {
+            coin.transform.DORotate(new Vector3(0, 180, 0), 10);
+            yield return new WaitForSeconds(15);
+        }
     }
 
 }
