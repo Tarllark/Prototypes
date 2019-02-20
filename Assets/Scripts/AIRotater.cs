@@ -23,8 +23,8 @@ public class AIRotater : MonoBehaviour
         while(true)
         {
             gameObject.transform.DORotate(new Vector3(0, 180, 0), 60);
-            //yield return new WaitForSeconds(65);
-            new WaitForSeconds(65);
+            yield return new WaitForSeconds(65);
+           
         }
         
     }
