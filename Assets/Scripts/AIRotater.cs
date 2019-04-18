@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class AIRotater : MonoBehaviour
 {
+
+    public GameObject deathEffect;
+
     int rotation;
     // Start is called before the first frame update
     void Start()
@@ -28,4 +31,14 @@ public class AIRotater : MonoBehaviour
         }
         
     }
+
+
+    void OnDestroy()
+    {
+        GameObject DE = Instantiate(deathEffect);
+        DE.transform.position = gameObject.transform.position;
+        Destroy(DE, 5f);
+    }
+
+
 }
